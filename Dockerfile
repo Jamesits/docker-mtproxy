@@ -20,7 +20,7 @@ LABEL maintainer="docker@public.swineson.me"
 
 RUN apt-get update -y \
 	&& apt-get full-upgrade -y \
-	&& apt-get install -y libssl1.1 zlib1g supervisor cron xxd curl
+	&& apt-get install -y libssl1.1 zlib1g supervisor cron xxd curl libcap2-bin
 
 # copy executables
 RUN mkdir -p /usr/local/bin
@@ -28,8 +28,9 @@ COPY --from=builder /root/MTProxy/objs/bin/mtproto-proxy /usr/local/bin/
 COPY start-mtproxy.sh /usr/local/bin/
 COPY restart-mtproxy.sh /usr/local/bin/
 COPY docker-entrypoint.sh /usr/local/bin/
-# for Windows compatibility
-RUN chmod +x /usr/local/bin/*
+# for Windows filesystem compatibility, set executable flag
+RUN chmod +x /usr/local/bin/* \
+	&& setcap CAP_NET_BIND_SERVICE=+eip /usr/local/bin/mtproto-proxy
 
 # setup crontab
 COPY crontab.txt /tmp/
@@ -47,5 +48,5 @@ RUN mkdir -p /etc/mtproto-proxy \
 
 EXPOSE 443/tcp 8888/tcp
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["supervisord", "-c", "/etc/supervisor/supervisor.conf", "-n"]
+CMD ["supervisord"]
 
