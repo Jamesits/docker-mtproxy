@@ -11,7 +11,11 @@ fi
 
 
 echo "Updating Telegram DC config..."
-curl -s https://core.telegram.org/getProxyConfig -o /etc/mtproto-proxy/proxy-multi.conf
+if curl -s https://core.telegram.org/getProxyConfig -o /etc/mtproto-proxy/proxy-multi.conf; then
+	echo "DC config updated successfully."
+else
+	echo "Unable to update DC config, using the embedded one from Docker image."
+fi
 
 echo "Starting..."
 exec mtproto-proxy -6 -u root -p 8888 -H 443 -S "${SECRET}" --aes-pwd /etc/mtproto-proxy/proxy-secret /etc/mtproto-proxy/proxy-multi.conf -M "${THREADS}"
