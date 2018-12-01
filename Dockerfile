@@ -38,13 +38,13 @@ RUN crontab /tmp/crontab.txt \
 	&& chmod 600 /etc/crontab
 
 # setup supervisor
-COPY supervisor.conf /etc/supervisor/supervisor.conf
+COPY supervisord.conf /etc/supervisor/
 
 # setup MTProxy
 RUN mkdir -p /etc/mtproto-proxy \
 	&& curl -s https://core.telegram.org/getProxySecret -o /etc/mtproto-proxy/proxy-secret
 
-EXPOSE [443/tcp, 8888/tcp]
+EXPOSE 443/tcp 8888/tcp
 ENTRYPOINT ["docker-entrypoint.sh"]
 CMD ["supervisord", "-c", "/etc/supervisor/supervisor.conf", "-n"]
 

@@ -1,2 +1,2 @@
-0 0 * * * *	/usr/local/bin/restart-mtproxy.sh
+0 0 * * *	/usr/local/bin/restart-mtproxy.sh
 
