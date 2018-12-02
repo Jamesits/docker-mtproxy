@@ -12,13 +12,13 @@ Basic usage:
 
 ```shell
 docker pull jamesits/mtproxy:latest
-docker run -p 443:443 -p 2398:2398 -e SECRET=YOUR_SECRET -it jamesits/mtproxy:latest
+docker run -p 443:443 -e SECRET=YOUR_SECRET -it jamesits/mtproxy:latest
 ```
 
 ### Ports 
 
 * 443: proxy port
-* 2398: monitoring port
+* 2398: monitoring port (optional)
 
 ### Environment variables
 
