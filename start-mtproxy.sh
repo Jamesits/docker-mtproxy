@@ -38,7 +38,7 @@ echo "[*] Final configuration:"
 echo "[*]   Secret 1: ${SECRET}"
 echo "[*]   tg:// link for secret 1 auto configuration: tg://proxy?server=${EXTERNAL_IP}&port=${PORT}&secret=dd${SECRET}"
 echo "[*]   t.me link for secret 1: https://t.me/proxy?server=${EXTERNAL_IP}&port=${PORT}&secret=dd${SECRET}"
-echo "[*]   Tag: ${TAG+no tag}"
+echo "[*]   Tag: ${TAG:-no tag}"
 echo "[*]   External IP: ${EXTERNAL_IP}"
 echo "[*]   Make sure to fix the links in case you run the proxy on a different port."
 
