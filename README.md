@@ -9,6 +9,7 @@ The [MTProxy](https://github.com/TelegramMessenger/MTProxy) you know in Docker. 
 Basic usage:
 
 ```shell
+docker pull jamesits/mtproxy:latest
 docker run -p 443:443 -p 2398:2398 -e SECRET=YOUR_SECRET -it jamesits/mtproxy:latest
 ```
 
