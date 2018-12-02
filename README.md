@@ -1,6 +1,6 @@
 # docker-mtproxy
 
-The [MTProxy](https://github.com/TelegramMessenger/MTProxy) you know in Docker. [The official image](https://hub.docker.com/r/telegrammessenger/proxy/) is [said to be outdated](https://github.com/TelegramMessenger/MTProxy#docker-image) so I made a always fresh one.
+The [MTProxy](https://github.com/TelegramMessenger/MTProxy) you know in Docker. [The official image](https://hub.docker.com/r/telegrammessenger/proxy/) is [said to be outdated](https://github.com/TelegramMessenger/MTProxy#docker-image) so I made an always fresh one.
 
 [![Build Status](https://dev.azure.com/nekomimiswitch/General/_apis/build/status/MTProxy%20Docker%20Image)](https://dev.azure.com/nekomimiswitch/General/_build/latest?definitionId=32)
 
