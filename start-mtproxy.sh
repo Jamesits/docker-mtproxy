@@ -12,7 +12,7 @@ fi
 APPEND_ARGS=""
 
 # gather config
-: "${THREADS:=1}"
+: "${WORKERS:=1}"
 : "${PORT:=443}"
 INTERNAL_IP=$(awk '/32 host/ { print f } {f=$2}' <<< "$(</proc/net/fib_trie)" | grep -v 127.0.0.1 | sed -n 1p)
 echo "Inner IP: ${INTERNAL_IP}"
@@ -34,9 +34,13 @@ else
 	APPEND_ARGS="${APPEND_ARGS} --proxy-tag ${TAG}"
 fi
 
-echo "Link: tg://proxy?server=${EXTERNAL_IP}&port=${PORT}&secret=dd${SECRET}"
-echo "Link: https://t.me/proxy?server=${EXTERNAL_IP}&port=${PORT}&secret=dd${SECRET}"
+echo "[*] Final configuration:"
+echo "[*]   Secret 1: ${SECRET}"
+echo "[*]   tg:// link for secret 1 auto configuration: tg://proxy?server=${EXTERNAL_IP}&port=${PORT}&secret=dd${SECRET}"
+echo "[*]   t.me link for secret 1: https://t.me/proxy?server=${EXTERNAL_IP}&port=${PORT}&secret=dd${SECRET}"
+echo "[*]   Tag: ${TAG+no tag}"
+echo "[*]   External IP: ${EXTERNAL_IP}"
+echo "[*]   Make sure to fix the links in case you run the proxy on a different port."
 
-echo "Starting..."
-exec mtproto-proxy -6 -u nobody -p 8888 -H 443 -S "${SECRET}" --aes-pwd /etc/mtproto-proxy/proxy-secret /etc/mtproto-proxy/proxy-multi.conf -M "${THREADS}" --nat-info ${INTERNAL_IP}:${EXTERNAL_IP} ${APPEND_ARGS}
+exec mtproto-proxy -6 -u nobody -p 2398 -H 443 -S "${SECRET}" --aes-pwd /etc/mtproto-proxy/proxy-secret /etc/mtproto-proxy/proxy-multi.conf -M "${WORKERS}" --nat-info ${INTERNAL_IP}:${EXTERNAL_IP} ${APPEND_ARGS}
 
