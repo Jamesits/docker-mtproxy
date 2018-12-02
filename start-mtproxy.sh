@@ -34,8 +34,8 @@ else
 	APPEND_ARGS="${APPEND_ARGS} --proxy-tag ${TAG}"
 fi
 
-echo "Link: tg://proxy?server=${OUTER_IP}&port=${PORT}&secret=${SECRET}"
-echo "Link: https://t.me/proxy?server=${OUTER_IP}&port=${PORT}&secret=${SECRET}"
+echo "Link: tg://proxy?server=${OUTER_IP}&port=${PORT}&secret=dd${SECRET}"
+echo "Link: https://t.me/proxy?server=${OUTER_IP}&port=${PORT}&secret=dd${SECRET}"
 
 echo "Starting..."
 exec mtproto-proxy -6 -u nobody -p 8888 -H 443 -S "${SECRET}" --aes-pwd /etc/mtproto-proxy/proxy-secret /etc/mtproto-proxy/proxy-multi.conf -M "${THREADS}" --nat-info ${INNER_IP}:${OUTER_IP} ${APPEND_ARGS}
