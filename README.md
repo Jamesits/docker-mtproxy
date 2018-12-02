@@ -31,8 +31,8 @@ docker run -p 443:443 -p 2398:2398 -e SECRET=YOUR_SECRET -it jamesits/mtproxy:la
 ## Caveats
 
 * The proxy will restart itself at midnight to update DC configuration. If you didn't explicitly set an `SECRET`, it will change during the restart.
-* By default the container will connect to `ip.sb` to detect its external IP. If you don't want this feature, set `EXTERNAL_IP` explicitly.
-* The image on Docker Hub will be rebuilt automatically in 24h if there are changes on the master branch of the upstream codebase. Please pull the latest one before use.
+* By default the container will connect to [ip.sb API](https://ip.sb/api/) to detect its external IP. If you don't want this feature, set `EXTERNAL_IP` explicitly.
+* The image on Docker Hub will be rebuilt automatically in 24h (checked by Azure DevOps) if there are any changes on the master branch of the upstream codebase. Please pull the latest one before use.
 
 ## Donation
 
