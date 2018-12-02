@@ -25,4 +25,13 @@ docker run -p 443:443 -p 8888:8888 -e SECRET=YOUR_SECRET -it jamesits/mtproxy:la
 * `PORT`: your user-facing port, only needed if is not 443
 * `THREADS`: CPU threads, default=1
 
+## Caveats
 
+* The proxy will restart itself at midnight to update DC configuration. If you didn't explicitly set an `SECRET`, it will change during the restart.
+* By default the container will connect to `ip.sb` to detect its external IP. If you don't want this feature, set `EXTERNAL_IP` explicitly.
+
+## Donation
+
+If this project is helpful to you, please consider buying me a coffee.
+
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/Jamesits) or [PayPal](https://paypal.me/Jamesits)
