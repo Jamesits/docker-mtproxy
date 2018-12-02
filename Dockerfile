@@ -42,8 +42,8 @@ COPY supervisord.conf /etc/supervisor/
 
 # setup MTProxy
 RUN mkdir -p /etc/mtproto-proxy \
-	&& curl -s https://core.telegram.org/getProxySecret -o /etc/mtproto-proxy/proxy-secret \
-	&& curl -s https://core.telegram.org/getProxyConfig -o /etc/mtproto-proxy/proxy-multi.conf
+	&& curl -Lv https://core.telegram.org/getProxySecret -o /etc/mtproto-proxy/proxy-secret \
+	&& curl -Lv https://core.telegram.org/getProxyConfig -o /etc/mtproto-proxy/proxy-multi.conf
 
 EXPOSE 443/tcp 8888/tcp
 ENTRYPOINT ["docker-entrypoint.sh"]
