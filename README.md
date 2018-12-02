@@ -21,7 +21,8 @@ docker run -p 443:443 -p 8888:8888 -e SECRET=YOUR_SECRET -it jamesits/mtproxy:la
 
 * `SECRET`: a random string, generate one with `head -c 16 /dev/urandom | xxd -ps`
 * `TAG`: your proxy tag, register with [@MTProxybot](https://t.me/MTProxybot) and you will get one
-* `OUTER_IP`: your global routable IP for users to connect, only needed if inbound and outbound use different IPs
+* `EXTERNAL_IP`: your global routable IP for users to connect, only needed if your server ingress and egress connections use different IPs
+* `PORT`: your user-facing port, only needed if is not 443
 * `THREADS`: CPU threads, default=1
 
 
