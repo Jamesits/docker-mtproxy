@@ -3,6 +3,8 @@
 The [MTProxy](https://github.com/TelegramMessenger/MTProxy) you know in Docker. [The official image](https://hub.docker.com/r/telegrammessenger/proxy/) is [said to be outdated](https://github.com/TelegramMessenger/MTProxy#docker-image) so I made an always fresh one.
 
 [![Build Status](https://dev.azure.com/nekomimiswitch/General/_apis/build/status/MTProxy%20Docker%20Image)](https://dev.azure.com/nekomimiswitch/General/_build/latest?definitionId=32)
+[![](https://images.microbadger.com/badges/version/jamesits/mtproxy.svg)](https://microbadger.com/images/jamesits/mtproxy "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/jamesits/mtproxy.svg)](https://microbadger.com/images/jamesits/mtproxy "Get your own image badge on microbadger.com")
 
 ## Usage
 
