@@ -22,7 +22,7 @@ LABEL maintainer="docker@public.swineson.me"
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update -y \
 	&& apt-get full-upgrade -y \
-	&& apt-get install -y --no-install-recommends libssl1.1 zlib1g supervisor cron xxd curl \
+	&& apt-get install -y --no-install-recommends libssl1.1 zlib1g supervisor cron xxd curl ca-certificates \
 	&& apt-get clean -y \
 	&& rm -rf /var/lib/apt/lists/*
 
