@@ -22,8 +22,10 @@ docker run -p 443:443 -e SECRET=<MY_SECRET> -it jamesits/mtproxy:latest
 
 # register your bot with @MTProxybot and get a tag!
 
-# start as daemon
-docker run --restart unless-stopped -p 443:443 -e SECRET=<MY_SECRET> -e TAG=<MY_TAG> jamesits/mtproxy:latest
+# start as daemon with default port
+docker run -d --restart unless-stopped -p 443:443 -e SECRET=<MY_SECRET> -e TAG=<MY_TAG> jamesits/mtproxy:latest
+# or with a different port
+docker run -d --restart unless-stopped -p <PORT>:443 -e SECRET=<MY_SECRET> -e TAG=<MY_TAG> -e PORT=<PORT> jamesits/mtproxy:latest
 ```
 
 ### Ports 
