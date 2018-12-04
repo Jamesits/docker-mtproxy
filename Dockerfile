@@ -13,7 +13,6 @@ RUN git clone https://github.com/TelegramMessenger/MTProxy.git
 WORKDIR /root/MTProxy
 
 RUN make -j
-RUN ls -alh objs/bin
 
 # production stage
 FROM ubuntu:18.04
