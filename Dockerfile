@@ -26,7 +26,6 @@ RUN apt-get update -y \
 RUN mkdir -p /usr/local/bin
 COPY --from=builder /root/MTProxy/objs/bin/mtproto-proxy /usr/local/bin/
 COPY start-mtproxy.sh /usr/local/bin/
-COPY restart-mtproxy.sh /usr/local/bin/
 COPY docker-entrypoint.sh /usr/local/bin/
 # for Windows filesystem compatibility, set executable flag
 RUN chmod +x /usr/local/bin/*
