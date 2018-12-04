@@ -11,8 +11,19 @@ The [MTProxy](https://github.com/TelegramMessenger/MTProxy) you know in Docker. 
 Basic usage:
 
 ```shell
+# force update to the latest image
 docker pull jamesits/mtproxy:latest
-docker run -p 443:443 -e SECRET=YOUR_SECRET -it jamesits/mtproxy:latest
+
+# generate a secret
+head -c 16 /dev/urandom | xxd -ps
+
+# test run
+docker run -p 443:443 -e SECRET=<MY_SECRET> -it jamesits/mtproxy:latest
+
+# register your bot with @MTProxybot and get a tag!
+
+# start as daemon
+docker run --restart unless-stopped -p 443:443 -e SECRET=<MY_SECRET> -e TAG=<MY_TAG> jamesits/mtproxy:latest
 ```
 
 ### Ports 
@@ -33,6 +44,7 @@ docker run -p 443:443 -e SECRET=YOUR_SECRET -it jamesits/mtproxy:latest
 * The proxy will restart itself at midnight to update DC configuration. If you didn't explicitly set an `SECRET`, it will change during the restart.
 * By default the container will connect to [ip.sb API](https://ip.sb/api/) to detect its external IP. If you don't want this feature, set `EXTERNAL_IP` explicitly.
 * The image on Docker Hub will be rebuilt automatically in 24h (checked by Azure DevOps) if there are any changes on the master branch of the upstream codebase. Please pull the latest one before use.
+* Always check your server time! If possible, sync with a NTP server.
 
 ## Donation
 
